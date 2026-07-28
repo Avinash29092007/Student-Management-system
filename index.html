@@ -1,46 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Management System</title>
-
+    <title>Student Management</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<nav>
-    <h2>StudentMS</h2>
+<h1>Student Management System</h1>
 
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/add">Add Student</a></li>
-        <li><a href="/students">Students</a></li>
-    </ul>
-</nav>
+<form action="/add" method="POST">
 
-<section class="hero">
-    <div class="overlay">
-        <div class="content">
+    <input type="text" name="name" placeholder="Student Name" required>
 
-            <h1>Student Management System</h1>
+    <input type="text" name="department" placeholder="Department" required>
 
-            <p>
-                Manage student records easily with Flask & MongoDB.
-            </p>
+    <input type="number" name="year" placeholder="Year" required>
 
-            <a href="/dashboard" class="btn">
-                Go to Dashboard
-            </a>
+    <button type="submit">Add Student</button>
 
-        </div>
-    </div>
-</section>
+</form>
 
-<footer>
-    © 2026 Student Management System
-</footer>
+<br>
+
+<a href="/students">View Students</a>
 
 </body>
 </html>
