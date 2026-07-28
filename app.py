@@ -1,30 +1,30 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-# Home Page
+students = []
+
 @app.route("/")
 def home():
     return render_template("index.html")
 
-
-# Dashboard
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
-
-
-# Add Student
-@app.route("/add")
+@app.route("/add", methods=["POST"])
 def add_student():
-    return render_template("add_student.html")
+    name = request.form["name"]
+    department = request.form["department"]
+    year = request.form["year"]
 
+    students.append({
+        "name": name,
+        "department": department,
+        "year": year
+    })
 
-# View Students
+    return redirect("/students")
+
 @app.route("/students")
-def students():
-    return render_template("students.html")
-
+def view_students():
+    return render_template("students.html", students=students)
 
 if __name__ == "__main__":
     app.run(debug=True)
