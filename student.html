@@ -1,60 +1,36 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<title>Add Student</title>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+    <title>Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
 
-<nav>
+<h1>Student List</h1>
 
-<h2>Add Student</h2>
+<table>
 
-<ul>
+<tr>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Year</th>
+</tr>
 
-<li><a href="/">Home</a></li>
+{% for student in students %}
 
-<li><a href="/dashboard">Dashboard</a></li>
+<tr>
+    <td>{{ student.name }}</td>
+    <td>{{ student.department }}</td>
+    <td>{{ student.year }}</td>
+</tr>
 
-<li><a href="/students">Students</a></li>
+{% endfor %}
 
-</ul>
+</table>
 
-</nav>
+<br>
 
-<div class="container">
-
-<div class="card">
-
-<form>
-
-<input type="text" placeholder="Student Name">
-
-<input type="text" placeholder="Register Number">
-
-<input type="text" placeholder="Department">
-
-<input type="number" placeholder="Year">
-
-<input type="text" placeholder="Phone Number">
-
-<button>
-
-Save Student
-
-</button>
-
-</form>
-
-</div>
-
-</div>
+<a href="/">Add Another Student</a>
 
 </body>
-
 </html>
